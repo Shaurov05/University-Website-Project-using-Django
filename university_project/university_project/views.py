@@ -23,6 +23,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from braces.views import SelectRelatedMixin
 
 
+class ErrorTemplateView(TemplateView):
+
+    def get_template_names(self):
+        template_name = "error.html"
+        return template_name
+
+      
 
 class RegistrationOptionsPage(TemplateView):
     template_name = 'registration_options.html'
