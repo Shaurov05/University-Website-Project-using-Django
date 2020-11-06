@@ -14,8 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from . import views
+from . views import ErrorTemplateView
 # from django.conf import settings
 from django.conf.urls.static import static
 
@@ -32,6 +33,8 @@ urlpatterns = [
     path('departments/', include("departments.urls", namespace='departments')),
     path('students/', include("students.urls", namespace='students')),
     path('teachers/', include("teachers.urls", namespace='teachers')),
+
+    re_path(r"^.*$", ErrorTemplateView.as_view(), name='entry-point'),
 
 
 ]
